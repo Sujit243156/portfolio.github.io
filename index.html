@@ -62,7 +62,7 @@
       width: 100%;
     }
 
-    /* Hero Section with Transparent Background Image */
+    /* Hero Section */
     header {
       min-height: 100vh;
       display: flex;
@@ -71,13 +71,6 @@
       align-items: center;
       text-align: center;
       padding-top: 60px;
-
-      /* Transparent Overlay + Image */
-      background: 
-        linear-gradient(rgba(10, 10, 10, 0.6), rgba(10, 10, 10, 0.6)), 
-        url("../ASSETS/sujit111111.jpg") no-repeat center center/cover;
-      position: relative;
-      color: #fff;
     }
     header h1 {
       font-size: 70px;
@@ -136,6 +129,12 @@
       flex-direction: column;
       align-items: center;
       gap: 20px;
+    }
+    #about img {
+      max-width: 200px;
+      border-radius: 50%;
+      border: 5px solid #ff0057;
+      box-shadow: 0 0 20px #ff7b00;
     }
     #about p {
       max-width: 600px;
@@ -255,6 +254,7 @@
   <section id="about">
     <h2>About Me</h2>
     <div class="about-content">
+      <img src="../ASSETS/sujit111111.jpg" alt="Your Photo">
       <p>Hello! I'm <b>SUJIT JANARDHAN YADAV</b>, a passionate developer with a strong focus on creating clean, efficient, and user-friendly web applications. 
       I specialize in the MERN stack (MongoDB, Express, React, Node.js) and am always eager to learn new technologies.</p>
     </div>
