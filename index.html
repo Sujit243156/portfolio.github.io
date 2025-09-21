@@ -1,330 +1,236 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sujit Yadav | Portfolio</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sujit Yadav | Portfolio</title>
 
-  <style>
-    /* Global Reset */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      scroll-behavior: smooth;
-    }
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
-    body {
-      background: #0a0a0a;
-      color: #eaeaea;
-      font-family: 'Poppins', sans-serif;
-      line-height: 1.6;
-    }
+<!-- Google Font for Stylish Name -->
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
 
-    /* Navbar */
-    nav {
-      height: 60px;
-      width: 100%;
-      background: linear-gradient(90deg, #ff0057, #ff7b00, #00d4ff, #7d00ff);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 40px;
-      position: fixed;
-      top: 0;
-      left: 0;
-      z-index: 1000;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.6);
-    }
-    nav a {
-      color: #fff;
-      font-size: 16px;
-      text-decoration: none;
-      font-weight: 600;
-      position: relative;
-      transition: 0.3s;
-    }
-    nav a::after {
-      content: "";
-      position: absolute;
-      width: 0;
-      height: 2px;
-      background: #fff;
-      left: 0;
-      bottom: -5px;
-      transition: 0.3s;
-    }
-    nav a:hover {
-      color: #ffea00;
-    }
-    nav a:hover::after {
-      width: 100%;
-    }
+<style>
+/* Global Reset */
+* { margin:0; padding:0; box-sizing:border-box; scroll-behavior:smooth; }
+body { font-family: 'Poppins', sans-serif; line-height:1.6; color:#eaeaea; background:#0a0a0a; overflow-x:hidden; }
 
-    /* Hero Section */
-    header {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding-top: 60px;
-    }
-    header h1 {
-      font-size: 70px;
-      background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet);
-      background-size: 400% 400%;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation: rainbowFlow 6s infinite linear, floatName 3s ease-in-out infinite alternate;
-      text-shadow: 0 0 20px rgba(255,255,255,0.3);
-    }
-    @keyframes rainbowFlow {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-    @keyframes floatName {
-      from { transform: translateY(0px); }
-      to { transform: translateY(-15px); }
-    }
-    header p {
-      font-size: 22px;
-      margin-top: 10px;
-      color: #ddd;
-    }
-    .social-links {
-      margin-top: 20px;
-    }
-    .social-links a {
-      color: #fff;
-      margin: 0 10px;
-      font-size: 24px;
-      transition: 0.3s;
-    }
-    .social-links a:hover {
-      color: #ffea00;
-      transform: scale(1.2);
-    }
+/* Navbar */
+nav { height:60px; width:100%; background: linear-gradient(90deg, #ff0057, #ff7b00, #00d4ff, #7d00ff); display:flex; align-items:center; justify-content:center; gap:40px; position:fixed; top:0; left:0; z-index:1000; box-shadow:0 2px 8px rgba(0,0,0,0.6);}
+nav a { color:#fff; font-size:16px; text-decoration:none; font-weight:600; position:relative; transition:0.3s;}
+nav a::after { content:""; position:absolute; width:0; height:2px; background:#fff; left:0; bottom:-5px; transition:0.3s;}
+nav a:hover { color:#ffea00;}
+nav a:hover::after { width:100%; }
 
-    /* Sections */
-    section {
-      min-height: 100vh;
-      padding: 80px 20px;
-      text-align: center;
-    }
-    section h2 {
-      font-size: 2.5rem;
-      margin-bottom: 40px;
-      background: linear-gradient(90deg, #ff0057, #ff7b00, #00d4ff, #7d00ff);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
+/* Hero Section */
+header { min-height:100vh; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; padding-top:60px; position:relative; overflow:hidden; }
 
-    /* About */
-    #about .about-content {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 20px;
-    }
-    #about img {
-      max-width: 200px;
-      border-radius: 50%;
-      border: 5px solid #ff0057;
-      box-shadow: 0 0 20px #ff7b00;
-    }
-    #about p {
-      max-width: 600px;
-      font-size: 18px;
-    }
+/* Bubble Animation Background */
+.bubbles { position:absolute; top:0; left:0; width:100%; height:100%; z-index:-1; overflow:hidden; }
+.bubble {
+  position:absolute; bottom:-100px;
+  border-radius:50%;
+  opacity:0.7;
+  animation: rise 15s infinite;
+}
+@keyframes rise {
+  0% { transform: translateY(0) scale(0.5); opacity:0.5; }
+  50% { opacity:1; }
+  100% { transform: translateY(-1200px) scale(1); opacity:0; }
+}
 
-    /* Projects */
-    .project-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
-    }
-    .project-card {
-      background: #1c1c1c;
-      padding: 20px;
-      border-radius: 15px;
-      box-shadow: 0 0 15px rgba(255,0,87,0.3);
-      transition: 0.4s;
-    }
-    .project-card:hover {
-      transform: translateY(-10px) scale(1.03);
-      box-shadow: 0 0 25px rgba(0,212,255,0.6);
-    }
-    .project-card h3 {
-      margin-bottom: 10px;
-      color: #ffea00;
-    }
-    .project-card a {
-      display: inline-block;
-      margin-top: 10px;
-      margin-right: 10px;
-      padding: 8px 15px;
-      background: linear-gradient(90deg, #ff0057, #00d4ff);
-      color: white;
-      border-radius: 20px;
-      text-decoration: none;
-      font-size: 14px;
-      transition: 0.3s;
-    }
-    .project-card a:hover {
-      box-shadow: 0 0 15px #00d4ff;
-      transform: scale(1.05);
-    }
+/* Stylish Name */
+header h1 {
+  font-family: 'Orbitron', sans-serif; 
+  font-size:70px;
+  background:linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet);
+  background-size:400% 400%;
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  animation: rainbowFlow 6s infinite linear, floatName 3s ease-in-out infinite alternate;
+  text-shadow:0 0 20px rgba(255,255,255,0.3);
+  z-index:1;
+}
+@keyframes rainbowFlow {0% { background-position: 0% 50%; }50% { background-position: 100% 50%; }100% { background-position: 0% 50%;}}
+@keyframes floatName { from { transform: translateY(0px); } to { transform: translateY(-15px); } }
 
-    /* Skills */
-    .skills-list {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 15px;
-    }
-    .skill-item {
-      background: linear-gradient(90deg, #ff0057, #ff7b00, #00d4ff);
-      padding: 10px 20px;
-      border-radius: 30px;
-      font-weight: 600;
-      color: white;
-      box-shadow: 0 0 10px rgba(0,212,255,0.6);
-      transition: 0.3s;
-    }
-    .skill-item:hover {
-      transform: scale(1.1);
-      box-shadow: 0 0 20px #ffea00;
-    }
+header p { font-size:22px; margin-top:10px; color:#ddd; z-index:1; }
+.social-links { margin-top:20px; z-index:1; }
+.social-links a { color:#fff; margin:0 10px; font-size:24px; transition:0.3s; }
+.social-links a:hover { transform:scale(1.2); }
 
-    /* Certificates */
-    #certificates .project-card h3 {
-      color: #00d4ff;
-    }
+/* Sections */
+section { min-height:100vh; padding:80px 20px; text-align:center; position:relative; }
+section h2 { font-size:2.5rem; margin-bottom:40px; background:linear-gradient(90deg, #ff0057, #ff7b00, #00d4ff, #7d00ff); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
 
-    /* Footer */
-    footer {
-      background: #111;
-      padding: 20px;
-      text-align: center;
-      border-top: 2px solid #ff0057;
-    }
-    footer p {
-      font-size: 14px;
-      color: #aaa;
-    }
+/* About */
+#about .about-content { display:flex; flex-direction:column; align-items:center; gap:20px; }
+#about img { max-width:200px; border-radius:50%; border:5px solid #ff0057; box-shadow:0 0 20px #ff7b00; }
+#about p { max-width:600px; font-size:18px; }
+#about button, #about .download-resume { padding:12px 25px; font-size:18px; border:none; border-radius:25px; cursor:pointer; margin-top:15px; background:linear-gradient(90deg, #ff0057, #ff7b00, #00d4ff, #7d00ff); color:#fff; font-weight:600; transition:0.3s; text-decoration:none; display:inline-block; }
+#about button:hover, #about .download-resume:hover { transform:scale(1.1); box-shadow:0 0 20px #ffea00; }
 
-    /* Responsive */
-    @media (max-width: 768px) {
-      header h1 { font-size: 50px; }
-      header p { font-size: 18px; }
-      #about p { font-size: 16px; }
-    }
-    @media (max-width: 480px) {
-      header h1 { font-size: 38px; }
-      header p { font-size: 16px; }
-    }
-  </style>
+/* Education */
+#education .edu-item { background:#1c1c1c; margin:15px auto; padding:20px; border-radius:15px; max-width:600px; text-align:left; box-shadow:0 0 15px rgba(255,0,87,0.3); transition:0.3s;}
+#education .edu-item:hover { transform:scale(1.05); box-shadow:0 0 25px rgba(0,212,255,0.6); }
+
+/* Projects */
+.project-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(280px,1fr)); gap:20px; }
+.project-card { background:#1c1c1c; padding:20px; border-radius:15px; box-shadow:0 0 15px rgba(255,0,87,0.3); transition:0.4s; }
+.project-card:hover { transform:translateY(-10px) scale(1.03); box-shadow:0 0 25px rgba(0,212,255,0.6); }
+.project-card h3 { margin-bottom:10px; color:#ffea00; }
+.project-card a { display:inline-block; margin-top:10px; margin-right:10px; padding:8px 15px; background:linear-gradient(90deg, #ff0057, #00d4ff); color:white; border-radius:20px; text-decoration:none; font-size:14px; transition:0.3s; }
+.project-card a:hover { box-shadow:0 0 15px #00d4ff; transform:scale(1.05); }
+
+/* Skills */
+.skills-list { display:flex; flex-wrap:wrap; justify-content:center; gap:15px; }
+.skill-item { background:linear-gradient(90deg, #ff0057, #ff7b00, #00d4ff); padding:10px 20px; border-radius:30px; font-weight:600; color:white; box-shadow:0 0 10px rgba(0,212,255,0.6); transition:0.3s; }
+.skill-item:hover { transform:scale(1.1); box-shadow:0 0 20px #ffea00; }
+
+/* Contact */
+#contact .contact-info { display:flex; flex-direction:column; align-items:center; gap:15px; }
+#contact .contact-info a { text-decoration:none; color:inherit; font-size:20px; transition:0.3s; }
+#contact .contact-info a:hover { transform:scale(1.2); }
+#contact .contact-info i { margin-right:8px; }
+
+/* Footer */
+footer { background:#111; padding:20px; text-align:center; border-top:2px solid #ff0057; }
+
+/* Responsive */
+@media (max-width:768px) { header h1{font-size:50px;} header p{font-size:18px;} #about p{font-size:16px;} }
+@media (max-width:480px) { header h1{font-size:38px;} header p{font-size:16px;} }
+</style>
 </head>
 <body>
 
-  <!-- Navbar -->
-  <nav>
-    <a href="#about">About</a>
-    <a href="#projects">Projects</a>
-    <a href="#skills">Skills</a>
-    <a href="#certificates">Certificates</a>
-  </nav>
+<nav>
+  <a href="#about">About</a>
+  <a href="#education">Education</a>
+  <a href="#projects">Projects</a>
+  <a href="#skills">Skills</a>
+  <a href="#certificates">Certificates</a>
+  <a href="#contact">Contact</a>
+</nav>
 
-  <!-- Hero -->
-  <header>
-    <h1>SUJIT JANARDHAN YADAV</h1>
-    <p>Full Stack Developer | Web Designer | Coder</p>
-    <div class="social-links">
-      <a href="https://www.linkedin.com/in/sujit-yadav-b2a643296"><i class="fab fa-linkedin"></i></a>
-      <a href="#"><i class="fab fa-github"></i></a>
-      <a href="#"><i class="fab fa-twitter"></i></a>
-    </div>
-  </header>
+<header>
+  <div class="bubbles"></div>
+  <h1>SUJIT JANARDHAN YADAV</h1>
+  <p>Full Stack Developer | Web Designer | Coder</p>
+  <div class="social-links">
+    <a href="https://www.linkedin.com/in/sujit-yadav-b2a643296" target="_blank"><i class="fab fa-linkedin" style="color:#0e76a8;"></i></a>
+    <a href="https://github.com/Sujit243156" target="_blank"><i class="fab fa-github" style="color:#fff;"></i></a>
+    <a href="#" target="_blank"><i class="fab fa-twitter" style="color:#1da1f2;"></i></a>
+    <a href="https://wa.me/qr/HOXPN7YYEQ6TC1" target="_blank"><i class="fab fa-whatsapp" style="color:#25D366;"></i></a>
+  </div>
+</header>
 
-  <!-- About -->
-  <section id="about">
-    <h2>About Me</h2>
-    <div class="about-content">
-      <img src="ASSETS/sujit111111.jpg" alt="SUJIT">
-      <p>Hello! I'm <b>SUJIT JANARDHAN YADAV</b>, a passionate developer with a strong focus on creating clean, efficient, and user-friendly web applications. 
-      I specialize in the MERN stack (MongoDB, Express, React, Node.js) and am always eager to learn new technologies.</p>
-    </div>
-  </section>
+<section id="about">
+  <h2>About Me</h2>
+  <div class="about-content">
+    <img src="ASSETS/sujit111111.jpg" alt="SUJIT">
+    <p>Hello! I'm <b>SUJIT JANARDHAN YADAV</b>, a passionate developer with a strong focus on creating clean, efficient, and user-friendly web applications. I specialize in Full Stack Python development and Data Analytics, and I am always eager to learn new technologies.</p>
+    <button onclick="document.querySelector('#contact').scrollIntoView({behavior:'smooth'});">Hire Me</button>
+    <a class="download-resume" href="ASSETS/Sujit_Resume.pdf" download>Download Resume</a>
+  </div>
+</section>
 
-  <!-- Projects -->
-  <section id="projects">
-    <h2>My Projects</h2>
-    <div class="project-grid">
-      <div class="project-card">
-        <h3>Parking Management System</h3>
-        <p>Developed during internship at i-base technology. Manage vehicle entries, exits, bookings & earnings with Excel integration.</p>
-        <a href="https://Inkd.in/gfbgTJfs" target="_blank">Live Demo</a>
-        <a href="#">GitHub Repo</a>
-      </div>
-      <div class="project-card">
-        <h3>Project 2</h3>
-        <p>A web project showcasing modern React + Node.js features with responsive design.</p>
-        <a href="#">Live Demo</a>
-        <a href="#">GitHub Repo</a>
-      </div>
-      <div class="project-card">
-        <h3>Project 3</h3>
-        <p>Another creative project with smooth UI/UX and clean backend structure.</p>
-        <a href="#">Live Demo</a>
-        <a href="#">GitHub Repo</a>
-      </div>
-    </div>
-  </section>
+<section id="education">
+  <h2>Education</h2>
+  <div class="edu-item"><b>SSC (10th):</b> Sanskar Primary High School, Daund - Distinction (2020)</div>
+  <div class="edu-item"><b>HSC (12th):</b> St. Sebastian Junior College, Daund - First Class (2022)</div>
+  <div class="edu-item"><b>BSc (Computer Science):</b> Daund College - Distinction (2025)</div>
+  <div class="edu-item"><b>Masters:</b> PDEA's Annasaheb Magar College - Pursuing</div>
+</section>
 
-  <!-- Skills -->
-  <section id="skills">
-    <h2>Skills</h2>
-    <div class="skills-list">
-      <span class="skill-item">HTML5</span>
-      <span class="skill-item">CSS3</span>
-      <span class="skill-item">JavaScript</span>
-      <span class="skill-item">React</span>
-      <span class="skill-item">Node.js</span>
-      <span class="skill-item">Python</span>
-      <span class="skill-item">Data Analytics</span>
-    </div>
-  </section>
+<section id="projects">
+<h2>My Projects</h2>
+<div class="project-grid">
+  <div class="project-card">
+    <h3>Parking Management System</h3>
+    <p>Developed during internship at i-base technology. Manage vehicle entries, exits, bookings & earnings with Excel integration.</p>
+    <a href="https://Inkd.in/gfbgTJfs" target="_blank">Live Demo</a>
+    <a href="#">GitHub Repo</a>
+  </div>
+  <div class="project-card">
+    <h3>Project 2</h3>
+    <p>A web project showcasing modern React + Node.js features with responsive design.</p>
+    <a href="#">Live Demo</a>
+    <a href="#">GitHub Repo</a>
+  </div>
+  <div class="project-card">
+    <h3>Project 3</h3>
+    <p>Another creative project with smooth UI/UX and clean backend structure.</p>
+    <a href="#">Live Demo</a>
+    <a href="#">GitHub Repo</a>
+  </div>
+</div>
+</section>
 
-  <!-- Certificates -->
-  <section id="certificates">
-    <h2>Certificates</h2>
-    <div class="project-grid">
-      <div class="project-card">
-        <h3>Full Stack Web Development</h3>
-        <p>Completed at QSpiders, 2025.</p>
-        <a href="#" target="_blank">View Certificate</a>
-      </div>
-      <div class="project-card">
-        <h3>Python for Data Science</h3>
-        <p>Coursera, 2024.</p>
-        <a href="https://drive.google.com/file/d/17TveXh9bLN761st9E8PU4xILnUl915Dl/view?usp=drivesdk" target="_blank">View Certificate</a>
-      </div>
-      <div class="project-card">
-        <h3>React Advanced Concepts</h3>
-        <p>Udemy, 2023.</p>
-        <a href="#" target="_blank">View Certificate</a>
-      </div>
-    </div>
-  </section>
+<section id="skills">
+<h2>Skills</h2>
+<div class="skills-list">
+  <span class="skill-item">HTML5</span>
+  <span class="skill-item">CSS3</span>
+  <span class="skill-item">JavaScript</span>
+  <span class="skill-item">React</span>
+  <span class="skill-item">Node.js</span>
+  <span class="skill-item">Python</span>
+  <span class="skill-item">Data Analytics</span>
+</div>
+</section>
 
-  <!-- Footer -->
-  <footer>
-    <p>&copy; 2025 SUJIT JANARDHAN YADAV. All Rights Reserved.</p>
-  </footer>
+<section id="certificates">
+<h2>Certificates</h2>
+<div class="project-grid">
+  <div class="project-card">
+    <h3>Full Stack Web Development</h3>
+    <p>Completed at QSpiders, 2025.</p>
+    <a href="#" target="_blank">View Certificate</a>
+  </div>
+  <div class="project-card">
+    <h3>Python for Data Science</h3>
+    <p>Coursera, 2024.</p>
+    <a href="https://drive.google.com/file/d/17TveXh9bLN761st9E8PU4xILnUl915Dl/view?usp=drivesdk" target="_blank">View Certificate</a>
+  </div>
+  <div class="project-card">
+    <h3>React Advanced Concepts</h3>
+    <p>Udemy, 2023.</p>
+    <a href="#" target="_blank">View Certificate</a>
+  </div>
+</div>
+</section>
+
+<section id="contact">
+<h2>Contact Me</h2>
+<div class="contact-info">
+  <a href="mailto:sr014065@gmail.com"><i class="fas fa-envelope" style="color:#D44638;"></i>sr014065@gmail.com</a>
+  <a href="tel:8788117391"><i class="fas fa-phone" style="color:#34B7F1;"></i>8788117391</a>
+  <a href="https://www.linkedin.com/in/sujit-yadav-b2a643296" target="_blank"><i class="fab fa-linkedin" style="color:#0e76a8;"></i>LinkedIn</a>
+  <a href="https://wa.me/8788117391" target="_blank"><i class="fab fa-whatsapp" style="color:#25D366;"></i>WhatsApp</a>
+</div>
+</section>
+
+<footer>
+<p>&copy; 2025 SUJIT JANARDHAN YADAV. All Rights Reserved.</p>
+</footer>
+
+<script>
+// Generate multicolor bubbles
+const bubbleContainer = document.querySelector('.bubbles');
+for(let i=0;i<35;i++){
+  const bubble = document.createElement('div');
+  bubble.classList.add('bubble');
+  let size = Math.random()*50 + 20;
+  bubble.style.width = `${size}px`;
+  bubble.style.height = `${size}px`;
+  bubble.style.left = `${Math.random()*100}%`;
+  bubble.style.background = `radial-gradient(circle, hsl(${Math.random()*360},100%,70%) 0%, transparent 70%)`;
+  bubble.style.animationDuration = `${Math.random()*20 + 15}s`;
+  bubble.style.animationDelay = `${Math.random()*10}s`;
+  bubbleContainer.appendChild(bubble);
+}
+</script>
 
 </body>
 </html>
